@@ -1,11 +1,14 @@
+
 const game = 0;
+const sizeWord = 10;
 var winGame = false;
+// DataGame.js => data
+
 createWords(game);
-// tao va them sk on click
 
+createdToFindWord(game);
+//click ô chữ
+//click vào nút check
 
-// neu het thoi gian thi thua
-// neu chon het so tu thang
-    
 
 
