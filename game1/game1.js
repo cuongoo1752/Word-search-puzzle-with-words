@@ -2,6 +2,7 @@
 const game = 0;
 const sizeWord = 10;
 var winGame = false;
+var positionWord = -1;
 // DataGame.js => data
 var currentWord = [];
 var iCurWord = [];

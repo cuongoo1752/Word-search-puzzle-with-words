@@ -12,15 +12,17 @@ function createdToFindWord(game){
     var must = $('#mustWords');
     $(must).append('<h3 id="title">Words</h3>');
     for(var i = 0; i < data[game].findWords.length; i++){
-        $(must).append('<div class="must">' + data[game].findWords[i] + '</div>');
+        $(must).append('<div class="must">' +'<i class="fa fa-check fa-1x nodis check" aria-hidden="true"></i>' + '<p>' + data[game].findWords[i] + '</p>' + '</div>');
     }
 }
 //current Word
 function clickWord(game, i , a){
-    currentWord.push(data[game].words[i][a]);
-    iCurWord.push(i);
-    aCurWord.push(a);
-
+    if(currentWord.length < 15){
+        currentWord.push(data[game].words[i][a]);
+        iCurWord.push(i);
+        aCurWord.push(a);
+    }
+    
     var tempString = "";
     for(var index = 0; index < currentWord.length; index++){
         tempString = tempString + currentWord[index];
@@ -36,7 +38,6 @@ function checkWord(game){
     var pos = data[game].resultWords[iCurWord[0]][aCurWord[0]];
 
     for(var i = 0; i < currentWord.length; i++){
-        console.log(pos);
         if(data[game].resultWords[iCurWord[i]][aCurWord[i]] != pos){
             return false;
         }
@@ -54,13 +55,17 @@ function checkWord(game){
         return false;
     }
 
+    positionWord = pos;
     return true;
 }
 
 function handle(game){
     $(".big-button").click(function (e) { 
-        console.log(checkWord(game));
-
+        if(checkWord(game)){
+            var temp = $('.check');
+            console.log(positionWord);
+            $(temp[positionWord]).removeClass('nodis');
+        }
 
         currentWord = [];
         iCurWord = [];
