@@ -1,7 +1,7 @@
 const data = [
     {
         topic: "My home",
-        findWords:["bedroom", "kitchen", "yard", "garden", "bathroom", "dining room", "garage"],
+        findWords:["bedroom", "kitchen", "yard", "garden", "bathroom", "diningroom", "garage"],
         words:[
             ["r",   "b",   "e",   "d",   "r",   "o",   "o",   "m",   "a",   "k"],
             ["g",   "d",   "d",   "s",   "e",   "s",   "v",   "u",   "y",   "i"],

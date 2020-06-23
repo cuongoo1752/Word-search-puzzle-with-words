@@ -1,17 +1,70 @@
 function createWords(game){
     // ul.rootWprd li.childWord
     var rWord = $('.rootWord');
-    console.log(rWord);
     for(var i = 0; i < sizeWord; i++ ){
         for(var a = 0; a < sizeWord; a++){
-            $(rWord[i]).append('<div class="childWord">' + data[game].words[i][a] + '</div>');
+            $(rWord[i]).append('<div class="childWord" onclick="clickWord(' + game + ',' + i + ',' + a +')">'+ data[game].words[i][a] + '</div>');
         }
     }
 }
 
 function createdToFindWord(game){
     var must = $('#mustWords');
+    $(must).append('<h3 id="title">Words</h3>');
     for(var i = 0; i < data[game].findWords.length; i++){
-        $(must).append('<div>' + data[game].findWords[i] + '</div>')
+        $(must).append('<div class="must">' + data[game].findWords[i] + '</div>');
     }
+}
+//current Word
+function clickWord(game, i , a){
+    currentWord.push(data[game].words[i][a]);
+    iCurWord.push(i);
+    aCurWord.push(a);
+
+    var tempString = "";
+    for(var index = 0; index < currentWord.length; index++){
+        tempString = tempString + currentWord[index];
+    }
+    $('#currentWord').html(tempString);
+}
+//current Word
+
+function checkWord(game){
+    if(currentWord.length == 0){
+        return false;
+    }
+    var pos = data[game].resultWords[iCurWord[0]][aCurWord[0]];
+
+    for(var i = 0; i < currentWord.length; i++){
+        console.log(pos);
+        if(data[game].resultWords[iCurWord[i]][aCurWord[i]] != pos){
+            return false;
+        }
+        if(data[game].resultWords[iCurWord[i]][aCurWord[i]] == -1){
+            return false;
+        }
+    }
+
+    var tempString = "";
+    for(var index = 0; index < currentWord.length; index++){
+        tempString = tempString + currentWord[index];
+    }
+
+    if(!(tempString === data[game].findWords[pos])){
+        return false;
+    }
+
+    return true;
+}
+
+function handle(game){
+    $(".big-button").click(function (e) { 
+        console.log(checkWord(game));
+
+
+        currentWord = [];
+        iCurWord = [];
+        aCurWord = [];
+        $('#currentWord').html("");
+    });
 }
