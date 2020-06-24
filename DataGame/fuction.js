@@ -22,6 +22,11 @@ function clickWord(game, i , a){
         iCurWord.push(i);
         aCurWord.push(a);
     }
+    var word = $('.rootWord');
+    var tempWord = $(word[i]).children();
+    $(tempWord[a]).addClass('selectChildWord');
+    
+    
     
     var tempString = "";
     for(var index = 0; index < currentWord.length; index++){
@@ -60,13 +65,15 @@ function checkWord(game){
 }
 
 function handle(game){
-    $(".big-button").click(function (e) { 
+    $(".check").click(function (e) { 
         if(checkWord(game)){
             var temp = $('.check');
             console.log(positionWord);
             $(temp[positionWord]).removeClass('nodis');
         }
+        
 
+        $('.childWord').removeClass('selectChildWord');
         currentWord = [];
         iCurWord = [];
         aCurWord = [];
