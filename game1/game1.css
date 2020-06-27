@@ -231,15 +231,6 @@ div#currentWord {
 }
 
 
-#bear {
-    position: absolute;
-    right: 0%;
-    bottom: 0%;
-    width: 250px;
-    height: 250px;
-    border: 1px solid black;
-}
-
 h3#title {
     font-size: 35px;
     text-align: center;
@@ -355,4 +346,20 @@ button.check:active {
 button.check:active::before {
     box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
     transform: translate3d(0, 0, -1em);
-  }
+}
+
+#animation{
+  
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  width: 418px;
+  height: 456px;
+  /* 80+1*110+1 */
+  border: 1px solid black;
+  background: url('./png/Idle\ \(1\).png');
+  background-size: cover;
+  
+}
+
+

@@ -73,10 +73,11 @@ function handle(game){
         }
         
 
-        $('.childWord').removeClass('selectChildWord');
+        $('.childWord').removeClass('selectChildWord'); 
         currentWord = [];
         iCurWord = [];
         aCurWord = [];
         $('#currentWord').html("");
     });
 }
+//https://www.google.com/search?q=%E1%BA%A3nh%20l%C3%A0m%20game&tbm=isch&tbs=rimg%3ACTmmu8CsSfjyImCYtI9ZpPb0uNXQhVAFHIdVerlUftfFr8fO_103swZJaMt1cv2R1DXDn0w88xIUDghm-66OTwAbq_1yRPAxaNvDqy8UEY8cQEADud_1Q5NyF9IJBtcsj4asLq65v9p0KyuspAqEgmYtI9ZpPb0uBEc5QFon0_1NPCoSCdXQhVAFHIdVEWlga6WPCbjqKhIJerlUftfFr8cRx9VAqZvwvdsqEgnO_103swZJaMhGCXRuFyH62GSoSCd1cv2R1DXDnEce9BRh1ogpIKhIJ0w88xIUDghkRpxrmHDCj8WIqEgm-66OTwAbq_1xGQIp0h05QnUSoSCSRPAxaNvDqyEeXdMulbBo5FKhIJ8UEY8cQEADsRvNhoirAdAMoqEgmd_1Q5NyF9IJBEDaJKTP-60VSoSCRtcsj4asLq6EQm0Cdu8wuMDKhIJ5v9p0KyuspAR7MA4v3v-8PVh7A5VfUTviBI&rlz=1C1CHBF_enVN884VN884&hl=vi&ved=0CBwQuIIBahcKEwjQ-PTHxJrqAhUAAAAAHQAAAAAQGg&biw=1349&bih=657#imgrc=8ELcoC0RDXwNjM&imgdii=PPdWPSk5eu04HM
