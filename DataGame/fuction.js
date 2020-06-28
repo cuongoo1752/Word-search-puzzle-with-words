@@ -10,12 +10,18 @@ function createWords(game){
 
 function createdToFindWord(game){
     var must = $('#mustWords');
-    $(must).append('<h3 id="title">Words</h3>');
     for(var i = 0; i < data[game].findWords.length; i++){
         $(must).append('<div class="must">' +'<i class="fa fa-check fa-1x nodis check" aria-hidden="true"></i>' + '<p>' + data[game].findWords[i] + '</p>' + '</div>');
     }
 }
 //current Word
+
+function createFiveStars(){
+    for(var i = 0; i < sumStar; i++){
+        $('#fiveStar').append('<div class="star"></div>');
+    }    
+}
+
 function clickWord(game, i , a){
     if(currentWord.length < 15){
         currentWord.push(data[game].words[i][a]);
@@ -66,10 +72,29 @@ function checkWord(game){
 
 function handle(game){
     $(".check").click(function (e) { 
+        // click vao check
         if(checkWord(game)){
+            // neu kiem tra tu nhap vao dung
+
+            
             var temp = $('.check');
-            console.log(positionWord);
-            $(temp[positionWord]).removeClass('nodis');
+            $(temp[positionWord]).removeClass('nodis');// them tich v o mustWords
+            // neu win
+            if(($('.nodis')).length == 0){
+                console.log("win");
+            }
+        }
+        else{
+            if(($('.star')).length > 0){
+            //tru 1 sao
+                ($('.star'))[0].remove();
+            }
+            else{
+            // neu het sao
+                console.log("lose");
+            }
+            
+            
         }
         
 
@@ -80,4 +105,4 @@ function handle(game){
         $('#currentWord').html("");
     });
 }
-//https://www.google.com/search?q=%E1%BA%A3nh%20l%C3%A0m%20game&tbm=isch&tbs=rimg%3ACTmmu8CsSfjyImCYtI9ZpPb0uNXQhVAFHIdVerlUftfFr8fO_103swZJaMt1cv2R1DXDn0w88xIUDghm-66OTwAbq_1yRPAxaNvDqy8UEY8cQEADud_1Q5NyF9IJBtcsj4asLq65v9p0KyuspAqEgmYtI9ZpPb0uBEc5QFon0_1NPCoSCdXQhVAFHIdVEWlga6WPCbjqKhIJerlUftfFr8cRx9VAqZvwvdsqEgnO_103swZJaMhGCXRuFyH62GSoSCd1cv2R1DXDnEce9BRh1ogpIKhIJ0w88xIUDghkRpxrmHDCj8WIqEgm-66OTwAbq_1xGQIp0h05QnUSoSCSRPAxaNvDqyEeXdMulbBo5FKhIJ8UEY8cQEADsRvNhoirAdAMoqEgmd_1Q5NyF9IJBEDaJKTP-60VSoSCRtcsj4asLq6EQm0Cdu8wuMDKhIJ5v9p0KyuspAR7MA4v3v-8PVh7A5VfUTviBI&rlz=1C1CHBF_enVN884VN884&hl=vi&ved=0CBwQuIIBahcKEwjQ-PTHxJrqAhUAAAAAHQAAAAAQGg&biw=1349&bih=657#imgrc=8ELcoC0RDXwNjM&imgdii=PPdWPSk5eu04HM
+

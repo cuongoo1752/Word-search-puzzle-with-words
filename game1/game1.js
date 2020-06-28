@@ -1,9 +1,14 @@
 
 const game = 0;
 const sizeWord = 10;
-var winGame = false;
+var stageGame = 0;
+// stageGame = 0 la game dang chay
+// = 1 la chien thang
+// = -1 la thua
 var positionWord = -1;
 // DataGame.js => data
+var sumStar = 5;
+// neu star = 0 thi thua game
 var currentWord = [];
 var iCurWord = [];
 var aCurWord = [];
@@ -11,19 +16,19 @@ createWords(game);
 
 createdToFindWord(game);
 
+createFiveStars();
+
 handle(game);
 
-var x = 1;
+var x = -(160 * 3)
 setInterval(function(){
     $("#animation").css({
-        background:'url(\'./png/Idle\ \('+x+'\).png\')'
-        //backgroundPosition: x + "px 0px"
+        //backgroundPosition: x + "px -220px"
     })
-    x++;
-    if(x == 16) x = 1;
-}, 500)
-//click ô chữ
-//click vào nút check
+    x = x - 160;
+    if(x == -(160 * 9))x = 0;
+}, 300)
+// nho mo hover trong words
 
 
 
