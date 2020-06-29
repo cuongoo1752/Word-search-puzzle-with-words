@@ -400,3 +400,12 @@ button.check:active::before {
   top: 8%;
   left: 4px;
 }
+
+#selectGame{
+  position: absolute;
+  font-size: 39px;
+  font-weight: bold;
+  right: 129px;
+  bottom: 35%;
+  color: white
+}

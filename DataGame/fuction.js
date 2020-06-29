@@ -126,13 +126,19 @@ function handleStageGame(stage){
 
 }
 
+
+
 function handleEventGame(game){
     $(".check").click(function (e) { 
         // click vao check
         if(checkWord(game)){
             // neu kiem tra tu nhap vao dung
 
-            audioTrue.play();
+            
+            checkGame = trueSelect;
+            index = 0;
+            handleSelectGame(trueSelect);
+            //animate lua chon dung
             var temp = $('.check');
             $(temp[positionWord]).removeClass('nodis');// them tich v o mustWords
             
@@ -142,12 +148,21 @@ function handleEventGame(game){
                 console.log("win");
                 handleStageGame(winGame);
             }
+            else{
+                audioTrue.play();
+                //audio lua chon dung
+            }
         }
         else{
             
             if(($('.star')).length > 0){
                 audioFalse.play();
                 //tru 1 sao
+                //audio lua chon sai
+                checkGame = falseSelect;
+                index = 0;
+                handleSelectGame(falseSelect);
+                //animate lua chon sai
                 ($('.star'))[0].remove();
             }
             else{
@@ -171,4 +186,23 @@ function handleEventGame(game){
         handleStageGame(menuGame);
     });
 }
+
+function handleSelectGame(select){
+    if(select == trueSelect){
+        $('#selectGame').html("True!");
+        $('#selectGame').css({
+            right: "129px"
+        })
+    }
+    else if(select == falseSelect){
+        $('#selectGame').html("False!");
+        $('#selectGame').css({
+            right: "118px"
+        })
+    }
+    else{
+        $('#selectGame').html("");
+    }
+}
+
 
