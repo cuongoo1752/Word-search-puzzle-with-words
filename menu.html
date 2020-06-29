@@ -6,21 +6,24 @@
     <title>Word search puzzle with words</title>
     <style>
 
-
+        body{
+            background: url('./game1/imageGame1/background.png');
+            background-size: cover;
+        }
         div.menuGame {
             margin-top: 100px;
             text-align: center;
         }
 
         h2 {
-            font-size: 40px;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 46px;
+        font-family: cursive;
+        color: #d63031;
         }
 
         .menuImage {
             margin-top: 50px;
             height: 240px;
-            border: .2px solid black;
             text-align: center;
         }
 
@@ -29,8 +32,6 @@
             margin: 0 20px;
             height: 240px;
             width: 240px;
-
-            border: .2px solid black;
         }
 
         .menuText {
@@ -42,24 +43,43 @@
 
         .menuText .text {
             display: inline-block;
-            margin: 0 20px;
+            margin: 0 26px;
             width: 220px;
             font-weight: bolder;
+            text-decoration: none;
+            color: black;
+            font-family: inherit;
         }
+        .text:hover{
+            color:tomato;
+        }
+        .i1{
+            background: url('./game1/imageGame1/home2.png') 0px 0px;
+            background-size: cover;
+        }
+        .i2{
+            background: url('./game2/imageGame2/schoolicon.png') 0px 0px;
+            background-size: cover;
+        }
+        .i3{
+            background: url('./game3/imageGame3/animalicon.png') 0px 0px;
+            background-size: cover;
+        }
+
     </style>
 </head>
 <body>
     <div class="menuGame">
         <h2>Word search puzzle with words</h2>
         <div class="menuImage">
-            <a href="game1/game1.html" class="image"></a>
-            <a href="game2/game2.html" class="image"></a>
-            <a href="game3/game3.html" class="image"></a>
+            <a href="game1/game1.html" class="image i1"></a>
+            <a href="game2/game2.html" class="image i2" ></a>
+            <a href="game3/game3.html" class="image i3"></a>
         </div>
         <div class="menuText">
             <a href="game1/game1.html" class="text">My home</a>
             <a href="game2/game2.html" class="text">School</a>
-            <a href="game3/game3.html" class="text">Body</a>
+            <a href="game3/game3.html" class="text">Animal</a>
         </div>
     </div>
 </body>
