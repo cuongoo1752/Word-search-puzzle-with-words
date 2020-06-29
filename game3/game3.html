@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal</title>
+    <script src="../GeneralGame/fuction.js"></script>
+    <script src="../GeneralGame/jquery.js"></script>
+    <script src="../DataGame.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="game3.css">
+    
+    
+</head>
+<body>
+    <audio src="./audioGame3/Next to You.mp3" autoplay loop></audio>
+    
+    <div id="game">
+        <a id="back" href="../menu.html"></a>
+        <div id="title">
+            <img id="imageTitle" src="./imageGame3/animalicon.png" alt="Ảnh tiêu đề">
+            <h2>Animal</h2>
+        </div>
+        <div id="menu"></div>
+        <div id="fiveStar" class="stage"></div>
+        <div id="mustWords" class="stage"></div>
+        <div id="currentWord" class="stage"></div>
+        <div id="words" class="stage">
+            <div class="contaiter">
+                <div class="rootWord"></div>
+                <div class="rootWord"></div>
+                <div class="rootWord"></div>
+                <div class="rootWord"></div>
+                <div class="rootWord"></div>
+                <div class="rootWord"></div>
+                <div class="rootWord"></div>
+                <div class="rootWord"></div>
+                <div class="rootWord"></div>
+                <div class="rootWord"></div>
+            </div>
+        </div>
+        <button type="submit" class="check stage" value="Check">Check</button>
+        <div id="animation" class="stage"></div>
+        <div id="decor">
+            <p class="textDecor p1">Home</p>
+            <p class="textDecor p2">Tutorial</p>
+            <p id="selectGame"></p>
+            <div class="line l4"></div>
+        </div>
+    </div>
+    <div id="stageGame">
+        <div id="win">
+            <img src="./imageGame3/win.jpg" alt="">
+            <h1 class="textStage">Congratulation!</h1>
+            <a class="linkStage" href="../menu.html">Back to Menu</a>
+        </div>
+        <div id="lose">
+            <img src="./imageGame3/lose.png" alt="">
+            <h1 class="textStage colorLose">Oh No!</h1>
+            <a class="linkStage" href="../menu.html">Back to Menu</a>
+        </div>
+        <div id="tutor">
+            <div id="box"></div>
+            <p class="textTutor">1.Click từng chữ để ghép thành từ cần tìm.</p>
+            <p class="textTutor">2.Bấm CHECK để kiểm tra câu trả lời.</p>
+            <p class="textTutor">3.Trả lời sai bạn bị trừ 1 sao</p>
+            <p class="textTutor">4.Trừ hết 5 sao bạn thuộc cuộc.</p>
+            <p class="textTutor">5.Trả lời hết các câu hỏi bạn chiến thắng</p>
+            <p class="linkStage" onclick="handleStageGame(backGame)">Back to Game</p>
+        </div>
+    </div>
+    
+    
+     <script src="game3.js"></script>
+</body>
+</html>

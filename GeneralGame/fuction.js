@@ -25,19 +25,19 @@ function createFiveStars(){
 function createAudioGame(){
     audioClick = new Audio();
     audioClick.type= 'audio/mpeg';
-    audioClick.src='./audioGame1/290439__littlerobotsoundfactory__mouth-12.wav';
+    audioClick.src='./audioGame'+(game + 1)+'/290439__littlerobotsoundfactory__mouth-12.wav';
     audioTrue = new Audio();
     audioTrue.type= 'audio/mpeg';
-    audioTrue.src='./audioGame1/true.mp3';
+    audioTrue.src='./audioGame'+(game + 1)+'/true.mp3';
     audioFalse = new Audio();
     audioFalse.type= 'audio/mpeg';
-    audioFalse.src='./audioGame1/false.ogg';
+    audioFalse.src='./audioGame'+(game + 1)+'/false.ogg';
     audioWin = new Audio();
     audioWin.type= 'audio/mpeg';
-    audioWin.src='./audioGame1/win.wav';
+    audioWin.src='./audioGame'+(game + 1)+'/win.wav';
     audioLose = new Audio();
     audioLose.type= 'audio/mpeg';
-    audioLose.src='./audioGame1/lose.wav';
+    audioLose.src='./audioGame'+(game + 1)+'/lose.wav';
 }
 function clickWord(game, i , a){
     audioClick.play();

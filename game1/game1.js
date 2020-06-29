@@ -57,7 +57,7 @@ setInterval(function(){
         checkGame = normal;
         handleSelectGame(normal);
     }
-}, 400)
+}, 400);
 // nho mo hover trong words
 
 
