@@ -22,7 +22,25 @@ function createFiveStars(){
     }    
 }
 
+function createAudioGame(){
+    audioClick = new Audio();
+    audioClick.type= 'audio/mpeg';
+    audioClick.src='./audioGame1/290439__littlerobotsoundfactory__mouth-12.wav';
+    audioTrue = new Audio();
+    audioTrue.type= 'audio/mpeg';
+    audioTrue.src='./audioGame1/true.mp3';
+    audioFalse = new Audio();
+    audioFalse.type= 'audio/mpeg';
+    audioFalse.src='./audioGame1/false.ogg';
+    audioWin = new Audio();
+    audioWin.type= 'audio/mpeg';
+    audioWin.src='./audioGame1/win.wav';
+    audioLose = new Audio();
+    audioLose.type= 'audio/mpeg';
+    audioLose.src='./audioGame1/lose.wav';
+}
 function clickWord(game, i , a){
+    audioClick.play();
     if(currentWord.length < 15){
         currentWord.push(data[game].words[i][a]);
         iCurWord.push(i);
@@ -70,30 +88,74 @@ function checkWord(game){
     return true;
 }
 
-function handle(game){
+function handleStageGame(stage){
+    // stageGame = 0 la game dang chay
+    // = 1 la chien thang
+    // = -1 la thua
+    // 2 la ba menu
+    if(stage == winGame){
+        $('.stage').css({
+            display:"none"
+        })
+        $('#win').css({
+            display:"block"
+        })
+    }
+    else if(stage ==  loseGame){
+        $('.stage').css({
+            display:"none"
+        })
+        $('#lose').css({
+            display:"block"
+        })
+    } else if(stage == menuGame){
+        $('.stage').css({
+            display:"none"
+        })
+        $('#tutor').css({
+            display:"block"
+        })
+    } else if(stage == backGame){
+        $('.stage').css({
+            display:"block"
+        })
+        $('#tutor').css({
+            display:"none"
+        })
+    }
+
+}
+
+function handleEventGame(game){
     $(".check").click(function (e) { 
         // click vao check
         if(checkWord(game)){
             // neu kiem tra tu nhap vao dung
 
-            
+            audioTrue.play();
             var temp = $('.check');
             $(temp[positionWord]).removeClass('nodis');// them tich v o mustWords
-            // neu win
+            
             if(($('.nodis')).length == 0){
+                // neu win
+                audioWin.play();
                 console.log("win");
+                handleStageGame(winGame);
             }
         }
         else{
+            
             if(($('.star')).length > 0){
-            //tru 1 sao
+                audioFalse.play();
+                //tru 1 sao
                 ($('.star'))[0].remove();
             }
             else{
-            // neu het sao
+            // thua
+                handleStageGame(loseGame);
+                audioLose.play();
                 console.log("lose");
             }
-            
             
         }
         
@@ -103,6 +165,10 @@ function handle(game){
         iCurWord = [];
         aCurWord = [];
         $('#currentWord').html("");
+    });
+
+    $("#menu").click(function (e){
+        handleStageGame(menuGame);
     });
 }
 

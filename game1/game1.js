@@ -1,7 +1,7 @@
 
 const game = 0;
 const sizeWord = 10;
-var stageGame = 0;
+const winGame = 1, loseGame = -1, runGame = 0, menuGame = 2, backGame = 3;
 // stageGame = 0 la game dang chay
 // = 1 la chien thang
 // = -1 la thua
@@ -9,6 +9,7 @@ var positionWord = -1;
 // DataGame.js => data
 var sumStar = 5;
 // neu star = 0 thi thua game
+var audioClick, audioTrue, audioFalse, audioWin, audioLose;
 var currentWord = [];
 var iCurWord = [];
 var aCurWord = [];
@@ -18,7 +19,9 @@ createdToFindWord(game);
 
 createFiveStars();
 
-handle(game);
+createAudioGame();
+
+handleEventGame(game);
 
 var x = -(160 * 3)
 setInterval(function(){

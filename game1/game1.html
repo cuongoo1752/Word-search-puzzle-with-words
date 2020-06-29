@@ -12,37 +12,19 @@
     
 </head>
 <body>
-    <div id="stageGame">
-        <div id="win">
-            <img src="./imageGame1/win.jpg" alt="">
-            <h1 class="textStage">Congratulation!</h1>
-            <a class="linkStage"href="../menu.html">Back to Menu</a>
-
-        </div>
-        <div id="lose">
-            <img src="./imageGame1/lose.png" alt="">
-            <h1 class="textStage colorLose">Oh No!</h1>
-            <a class="linkStage"href="../menu.html">Back to Menu</a>
-        </div>
-        <div id="tutor">
-            <p class="textTutor">-</p>
-            <p class="textTutor"></p>
-            <p class="textTutor"></p>
-            <p class="textTutor"></p>
-            <p class="textTutor"></p>
-        </div>
-    </div>
-     <div id="game">
+    <!-- <audio src="./audioGame1/Next to You.mp3" autoplay loop></audio> -->
+    
+    <div id="game">
         <a id="back" href="../menu.html"></a>
         <div id="title">
-             <img id="imageTitle" src="./imageGame1/my-house-clip-art-5.png" alt="Ảnh tiêu đề">
-             <h2>My home</h2>
+            <img id="imageTitle" src="./imageGame1/my-house-clip-art-5.png" alt="Ảnh tiêu đề">
+            <h2>My home</h2>
         </div>
         <div id="menu"></div>
-        <div id="fiveStar"></div>
-        <div id="mustWords"></div>
-        <div id="currentWord"></div>
-        <div id="words">
+        <div id="fiveStar" class="stage"></div>
+        <div id="mustWords" class="stage"></div>
+        <div id="currentWord" class="stage"></div>
+        <div id="words" class="stage">
             <div class="contaiter">
                 <div class="rootWord"></div>
                 <div class="rootWord"></div>
@@ -56,10 +38,37 @@
                 <div class="rootWord"></div>
             </div>
         </div>
-        <button type="submit" class="check" value="Check">Check</button>
-        <div id="animation"></div>
-     </div>
-
+        <button type="submit" class="check stage" value="Check">Check</button>
+        <div id="animation" class="stage"></div>
+        <div id="decor">
+            <p class="textDecor p1">Home</p>
+            <p class="textDecor p2">Tutorial</p>
+            <div class="line l4"></div>
+        </div>
+    </div>
+    <div id="stageGame">
+        <div id="win">
+            <img src="./imageGame1/win.jpg" alt="">
+            <h1 class="textStage">Congratulation!</h1>
+            <a class="linkStage" href="../menu.html">Back to Menu</a>
+        </div>
+        <div id="lose">
+            <img src="./imageGame1/lose.png" alt="">
+            <h1 class="textStage colorLose">Oh No!</h1>
+            <a class="linkStage" href="../menu.html">Back to Menu</a>
+        </div>
+        <div id="tutor">
+            <div id="box"></div>
+            <p class="textTutor">1.Click từng chữ để ghép thành từ cần tìm.</p>
+            <p class="textTutor">2.Bấm CHECK để kiểm tra câu trả lời.</p>
+            <p class="textTutor">3.Trả lời sai bạn bị trừ 1 sao</p>
+            <p class="textTutor">4.Trừ hết 5 sao bạn thuộc cuộc.</p>
+            <p class="textTutor">5.Trả lời hết các câu hỏi bạn chiến thắng</p>
+            <p class="linkStage" onclick="handleStageGame(backGame)">Back to Game</p>
+        </div>
+    </div>
+    
+    
      <script src="game1.js"></script>
 </body>
 </html>
