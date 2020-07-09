@@ -7,7 +7,6 @@ createFiveStars();
 
 createAudioGame();
 
-handleEventGame(game);
 
 var index = 0;
 var count = 0;

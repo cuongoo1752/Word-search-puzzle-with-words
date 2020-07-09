@@ -28,12 +28,7 @@ const falseSelect = {
 var bPoint = {
     i:-1,
     a:-1
-}
-var bePoint = {
-    i:-1,
-    a:-1
-}
-
+};
 var mPoint = {
     i:-1,
     a:-1
@@ -49,10 +44,9 @@ var iCurWord = [];
 var aCurWord = [];
 function beginPoint(game, i, a){
     console.log("begin");
-    //bPoint.i = i;
-    //bPoint.a = a;
+    bPoint.i = i;
+    bPoint.a = a;
     audioClick.play();
-    addClassSelect(game, i, a, 'selectChildWord');
     
 }
 
@@ -62,8 +56,10 @@ function equalAdd(num){
     else return -1;
 }
 function satisfiedPointInLine(b, e){
+    console.log(bPoint);
     if(b.i == -1 || b.a == -1)
         return false;
+                           
     if(b.i == e.i || b.a == e.a)
         return true;
     if(b.i - e.i == b.a - e.a)
@@ -72,39 +68,130 @@ function satisfiedPointInLine(b, e){
         return true;
     return false;
 }
-
-function movePoint(game, i, a){
-    console.log("move");
-    console.log(bPoint);
-    mPoint.i = i;
-    mPoint.a = a;
-    console.log(mPoint);
-    $('.childWord').removeClass('selectChildWord');
-    addClassSelect(game, i, a, 'selectChildWord');
-    console.log(bPoint);
-    var addI, addA;
+function linePoint(){
+    
     if(satisfiedPointInLine(bPoint, mPoint)){
-        console.log(bPoint);
+        var addI, addA;
         addI = equalAdd(mPoint.i - bPoint.i);
         addA = equalAdd(mPoint.a - bPoint.a);
-        var tempPoint = bPoint;
-        for(;; tempPoint.i = tempPoint.i + addI, tempPoint.a = tempPoint.a + addA){
-            //console.log('bpoint');
-            console.log(bPoint);
-            //console.log(bPoint);
-            if(tempPoint.i == mPoint.i && tempPoint.a == mPoint.a) break;
-            console.log(bPoint);
-            addClassSelect(game, tempPoint.i, tempPoint.a, 'selectChildWord');
+
+        var tempI = bPoint.i;
+        var tempA = bPoint.a
+        
+        while(true){
+            
+            addClassSelect(game, tempI, tempA, 'selectChildWord');
+            currentWord.push(data[game].words[tempI][tempA]);
+            iCurWord.push(tempI);
+            aCurWord.push(tempA);
+            
+            var tempString = "";
+            for(var index = 0; index < currentWord.length; index++){
+                tempString = tempString + currentWord[index];
+            }
+            $('#currentWord').html(tempString);
+
+            if(tempI == mPoint.i && tempA == mPoint.a) break;
+            tempI = tempI + addI;
+            tempA = tempA + addA;
         }
+
     }
+}
+function movePoint(game, iinput, ainput){
+    console.log("move");        
+    mPoint.i = iinput;
+    mPoint.a = ainput;
+    
+    $('.childWord').removeClass('selectChildWord');
+    addClassSelect(game, bPoint.i, bPoint.a, 'selectChildWord');
+    currentWord = [];
+    iCurWord = [];
+    aCurWord = [];
+    $('#currentWord').html("");
+
+    linePoint();
      
 }
 
 function endPoint(game, i, a){
     console.log("end");
-    // bPoint.i = -1;
-    // bPoint.a = -1;
-    addClassSelect(game, i, a, 'selectChildWord');
+    bPoint.i = -1;
+    bPoint.a = -1;
+
+
+    if(checkWord(game)){
+        // neu kiem tra tu nhap vao dung
+        var word = $('.rootWord');
+        var tempWord;
+        var pos = data[game].resultWords[iCurWord[0]][aCurWord[0]];
+        for(var index = 0;index < iCurWord.length; index++){
+            tempWord = $(word[iCurWord[index]]).children();
+            $(tempWord[aCurWord[index]]).css({
+                background:data[game].colorWords[pos]
+            });
+        }
+
+        checkGame = trueSelect;
+        index = 0;
+        handleSelectGame(trueSelect);
+        //animate lua chon dung
+        var temp = $('.check');
+        $(temp[positionWord]).removeClass('nodis');// them tich v o mustWords
+        
+        if(($('.nodis')).length == 0){
+            // neu win
+            audioWin.play();
+            console.log("win");
+            handleStageGame(winGame);
+        }
+        else{
+            audioTrue.play();
+            //audio lua chon dung
+        }
+    }
+    else{
+        
+        if(($('.star')).length > 0){
+            audioFalse.play();
+            //tru 1 sao
+            //audio lua chon sai
+            checkGame = falseSelect;
+            index = 0;
+            handleSelectGame(falseSelect);
+            //animate lua chon sai
+            ($('.star'))[0].remove();
+        }
+        else{
+        // thua
+            handleStageGame(loseGame);
+            audioLose.play();
+            console.log("lose");
+        }
+        
+    }
+    
+
+    $('.childWord').removeClass('selectChildWord'); 
+    currentWord = [];
+    iCurWord = [];
+    aCurWord = [];
+    $('#currentWord').html("");
+    $("#menu").click(function (e){
+        handleStageGame(menuGame);
+    });
+}
+
+function goOutWords(){
+    if(bPoint.i != -1){
+        $('.childWord').removeClass('selectChildWord'); 
+        currentWord = [];
+        iCurWord = [];
+        aCurWord = [];
+        $('#currentWord').html("");
+        bPoint.i = -1;
+        bPoint.a = -1;
+    }
 }
 
 function createWords(game){
@@ -159,26 +246,10 @@ function removeClassSelect(game, i, a, nameClass){
     $(tempWord[a]).removeClass(nameClass);
 }
 
-function clickWord(game, i , a){
-    audioClick.play();
-    if(currentWord.length < 15){
-        currentWord.push(data[game].words[i][a]);
-        iCurWord.push(i);
-        aCurWord.push(a);
-    }
-
-    addClassSelect(game, i, a, 'selectChildWord')
-    
-    var tempString = "";
-    for(var index = 0; index < currentWord.length; index++){
-        tempString = tempString + currentWord[index];
-    }
-    $('#currentWord').html(tempString);
-}
 //current Word
 
 function checkWord(game){
-    if(currentWord.length == 0){
+    if(currentWord.length <= 1){
         return false;
     }
     var pos = data[game].resultWords[iCurWord[0]][aCurWord[0]];
@@ -243,64 +314,6 @@ function handleStageGame(stage){
 
 }
 
-
-
-function handleEventGame(game){
-    $(".check").click(function (e) { 
-        // click vao check
-        if(checkWord(game)){
-            // neu kiem tra tu nhap vao dung
-            checkGame = trueSelect;
-            index = 0;
-            handleSelectGame(trueSelect);
-            //animate lua chon dung
-            var temp = $('.check');
-            $(temp[positionWord]).removeClass('nodis');// them tich v o mustWords
-            
-            if(($('.nodis')).length == 0){
-                // neu win
-                audioWin.play();
-                console.log("win");
-                handleStageGame(winGame);
-            }
-            else{
-                audioTrue.play();
-                //audio lua chon dung
-            }
-        }
-        else{
-            
-            if(($('.star')).length > 0){
-                audioFalse.play();
-                //tru 1 sao
-                //audio lua chon sai
-                checkGame = falseSelect;
-                index = 0;
-                handleSelectGame(falseSelect);
-                //animate lua chon sai
-                ($('.star'))[0].remove();
-            }
-            else{
-            // thua
-                handleStageGame(loseGame);
-                audioLose.play();
-                console.log("lose");
-            }
-            
-        }
-        
-
-        $('.childWord').removeClass('selectChildWord'); 
-        currentWord = [];
-        iCurWord = [];
-        aCurWord = [];
-        $('#currentWord').html("");
-    });
-
-    $("#menu").click(function (e){
-        handleStageGame(menuGame);
-    });
-}
 
 function handleSelectGame(select){
     if(select == trueSelect){
