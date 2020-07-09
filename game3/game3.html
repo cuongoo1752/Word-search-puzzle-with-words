@@ -15,7 +15,7 @@
 <body>
     <audio src="./audioGame3/Next to You.mp3" autoplay loop></audio>
     
-    <div id="game">
+    <div id="game" onmouseup="goOutWords()">
         <a id="back" href="../menu.html"></a>
         <div id="title">
             <img id="imageTitle" src="./imageGame3/animalicon.png" alt="Ảnh tiêu đề">
@@ -39,13 +39,11 @@
                 <div class="rootWord"></div>
             </div>
         </div>
-        <button type="submit" class="check stage" value="Check">Check</button>
         <div id="animation" class="stage"></div>
         <div id="decor">
             <p class="textDecor p1">Home</p>
             <p class="textDecor p2">Tutorial</p>
             <p id="selectGame"></p>
-            <div class="line l4"></div>
         </div>
     </div>
     <div id="stageGame">

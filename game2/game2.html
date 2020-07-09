@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My home</title>
+    <title>School</title>
     <script src="../GeneralGame/fuction.js"></script>
     <script src="../GeneralGame/jquery.js"></script>
     <script src="../DataGame.js"></script>
@@ -15,10 +15,10 @@
 <body>
     <audio src="./audioGame2/Next to You.mp3" autoplay loop></audio>
     
-    <div id="game">
+    <div id="game" onmouseup="goOutWords()">
         <a id="back" href="../menu.html"></a>
         <div id="title">
-            <img id="imageTitle" src="./imageGame2/schoolicon.png" alt="Ảnh tiêu đề">
+            <img id="imageTitle" src='./imageGame2/schoolicon.png' alt="Ảnh tiêu đề">
             <h2>School</h2>
         </div>
         <div id="menu"></div>
@@ -39,13 +39,11 @@
                 <div class="rootWord"></div>
             </div>
         </div>
-        <button type="submit" class="check stage" value="Check">Check</button>
         <div id="animation" class="stage"></div>
         <div id="decor">
             <p class="textDecor p1">Home</p>
             <p class="textDecor p2">Tutorial</p>
             <p id="selectGame"></p>
-            <div class="line l4"></div>
         </div>
     </div>
     <div id="stageGame">

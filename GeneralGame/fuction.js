@@ -1,29 +1,4 @@
 
-const game = 0;
-const sizeWord = 10;
-const winGame = 1, loseGame = -1, runGame = 0, menuGame = 2, backGame = 3;
-
-// stageGame = 0 la game dang chay
-// = 1 la chien thang
-// = -1 la thua
-var positionWord = -1;
-// DataGame.js => data
-var sumStar = 5;
-// neu star = 0 thi thua game
-var audioClick, audioTrue, audioFalse, audioWin, audioLose;
-// bien cua audio
-const normal = {
-    x:[0, 1, 7, 8],
-    y:[0, 0, 1, 1]
-}
-const trueSelect = {
-    x:[0, 0, 0],
-    y:[0, 8, 7]
-}
-const falseSelect = {
-    x:[0, 5, 6],
-    y:[0, 0, 1]
-}
 
 var bPoint = {
     i:-1,
@@ -37,13 +12,12 @@ var ePoint = {
     i:-1,
     a:-1
 }
-var checkGame = normal;
+
 // animation
 var currentWord = [];
 var iCurWord = [];
 var aCurWord = [];
 function beginPoint(game, i, a){
-    console.log("begin");
     bPoint.i = i;
     bPoint.a = a;
     audioClick.play();
@@ -56,7 +30,6 @@ function equalAdd(num){
     else return -1;
 }
 function satisfiedPointInLine(b, e){
-    console.log(bPoint);
     if(b.i == -1 || b.a == -1)
         return false;
                            
@@ -99,7 +72,7 @@ function linePoint(){
     }
 }
 function movePoint(game, iinput, ainput){
-    console.log("move");        
+
     mPoint.i = iinput;
     mPoint.a = ainput;
     
@@ -115,7 +88,6 @@ function movePoint(game, iinput, ainput){
 }
 
 function endPoint(game, i, a){
-    console.log("end");
     bPoint.i = -1;
     bPoint.a = -1;
 
@@ -142,7 +114,6 @@ function endPoint(game, i, a){
         if(($('.nodis')).length == 0){
             // neu win
             audioWin.play();
-            console.log("win");
             handleStageGame(winGame);
         }
         else{
@@ -166,7 +137,6 @@ function endPoint(game, i, a){
         // thua
             handleStageGame(loseGame);
             audioLose.play();
-            console.log("lose");
         }
         
     }

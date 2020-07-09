@@ -73,8 +73,6 @@ div#tutor .textTutor {
   height: 50px;
 }
 
-#game {
-}
 
 #back {
   background: url(./imageGame1/93634.png);
@@ -157,34 +155,52 @@ h2 {
   transform: translate(-50%, -50%);
   width: 45%;
   height: 76%;
-  border: 1px solid #474a5178;
-  border-radius: 5px;
+  border: 6px solid transparent;
+  border-radius: 8px;
   text-align: center;
   background: white;
-}
-
-#words {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  
 }
 
 #words:hover {
-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-} 
-.childWord {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  
+}
+
+@keyframes trueSelectOne{
+  0%{
+    border-color: transparent;
+  }
+  10%{
+    border-color:#2ecc71;
+
+  }
+  100%{
+    border-color: transparent;
+  }
+}
+@keyframes falseSelectOne{
+  0%{
+    border-color: transparent;
+  }
+  10%{
+    border-color:#fd79a8;
+
+  }
+  100%{
+    border-color: transparent;
+  }
 }
 
 
-#mustWords {
-}
+
 
 h3#title {
   font-size: 35px;
   text-align: center;
   font-family: cursive;
-}
-
-div#currentWord {
 }
 
 .must {

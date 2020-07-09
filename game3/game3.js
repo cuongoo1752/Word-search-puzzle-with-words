@@ -13,8 +13,8 @@ var sumStar = 5;
 var audioClick, audioTrue, audioFalse, audioWin, audioLose;
 // bien cua audio
 const normal = {
-    x:[0, 1, 7, 8],
-    y:[0, 0, 1, 1]
+    x:[0, 1, 7],
+    y:[0, 0, 1]
 }
 const trueSelect = {
     x:[0, 0, 0],
@@ -25,10 +25,7 @@ const falseSelect = {
     y:[0, 0, 1]
 }
 var checkGame = normal;
-// animation
-var currentWord = [];
-var iCurWord = [];
-var aCurWord = [];
+
 createWords(game);
 
 createdToFindWord(game);
@@ -37,26 +34,47 @@ createFiveStars();
 
 createAudioGame();
 
-handleEventGame(game);
 
 var index = 0;
 var count = 0;
-const timesOfSelect = 3;
+var stage = true;
+const timesOfSelect = 1;
 setInterval(function(){
     $("#animation").css({
         backgroundPosition: checkGame.x[index]*(-160) + "px " + checkGame.y[index] * (-220) + "px"
     })
     index++;
-    
     if(index == checkGame.x.length && checkGame != normal){
         count++;
     }
     if(index == checkGame.x.length) index = 0;
+
+
+    
+    if(checkGame == trueSelect){
+        $('#words').css({
+            animation: "trueSelectOne 0.6s linear forwards",
+            animationIterationCount: "infinite"
+        })
+    }
+    else if(checkGame == falseSelect){
+        $('#words').css({
+            animation: "falseSelectOne 0.6s linear forwards",
+            animationIterationCount: "infinite"
+        })
+    }
+    else{
+        $('#words').css({
+            animationIterationCount: 0
+        })
+    }
+    
     if(count == timesOfSelect){
         count = 0;
         checkGame = normal;
         handleSelectGame(normal);
     }
+    
 }, 400);
 // nho mo hover trong words
 
